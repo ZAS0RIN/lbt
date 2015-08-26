@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}LOLBets.ru{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0px;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOLBets.ru</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/events">События</a></li>
+                {% if current_user.role == 2 %}
+                <li><a href="/admin">Admin</a></li>
+                {% endif %}
+                {% if current_user.role == 1 %}
+                <li><a href="/admin">Moderator</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated() %}
+                <li class="dropdown">
+                    <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Баланс:{{current_user.balance}}р.
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/mybets">Мои ставки <span class="glyphicon glyphicon-th-list"></span></a></li>
+                        <li><a href="/balance">Мой баланс <span class="glyphicon glyphicon-usd"></span></a></li>
+                        <li><a href="/profile">Мой профиль <span class="glyphicon glyphicon-user"></span></a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('auth.logout') }}">Выход</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Вход</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<script src="/static/moment-with-locales.js"></script>
+<div class="container">
+    <br/>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% block page_content %}{% endblock %}
+</div>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+{% endblock %}

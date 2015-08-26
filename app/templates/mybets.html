@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Пользователь: {{current_user.username}}</h1>
+
+
+    </div>
+    <div class="col-md-5">
+        <h2>Активные ставки:</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <td> Время ставки </td>
+                <td> Ставка </td>
+                <td> Коэф </td>
+                <td> Команда </td>
+            </tr>
+            {% for i in active %}
+
+            <tr onclick="window.location.href='/event/{{i.author_event.id}}'; return false" style="cursor: pointer;">
+                <td>{{ momentjs(i.date).calendar() }}</td>
+                <td>{{ i.cash }}</td>
+                <td>{{ i.k }}</td>
+                <td>{{ i.author_team.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="col-md-5">
+        <h2>История</h2>
+        <table class="table">
+            <tr>
+                <td> Время ставки </td>
+                <td> Ставка </td>
+                <td> Коэф </td>
+                <td> Команда </td>
+            </tr>
+            {% for i in passive %}
+                {% if i.win == True %}
+            <tr class="success" onclick="window.location.href='/event/{{i.author_event.id}}'; return false" style="cursor: pointer;">
+            {% else %}
+            {% if i.win == False %}
+            <tr class="danger" onclick="window.location.href='/event/{{i.author_event.id}}'; return false" style="cursor: pointer;">
+            {% else %}
+            <tr class="active" onclick="window.location.href='/event/{{i.author_event.id}}'; return false" style="cursor: pointer;">
+            {% endif %}
+            {% endif %}
+                <td >{{ momentjs(i.date).calendar() }}</td>
+                <td>{{ i.cash }}</td>
+                <td>{{ i.k }}</td>
+                <td>{{ i.author_team.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

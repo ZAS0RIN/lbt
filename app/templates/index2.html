@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}LOLBets.ru{% endblock %}
+
+{% block content %}
+<!-- Carousel
+==================================================-->
+	<div id="slider" class="container">
+        <div id="Carousel" class="carousel slide">
+
+          <div class="carousel-inner">
+            <article class="item active">
+              <img src="{{ url_for('static', filename='lcs_client.jpg') }}">
+              <div class="carousel-caption">
+                <h2>Скоро! </h2>
+                  <p>Главное событие сезона League of Legends 2015. Успевай зарегистрироваться и подготовиться к WORLD CHAMPIONSHIP</p>
+                  <p></p>
+                <p><a class="btn btn-success btn-sm btn-square" style="background:#eab21f; border-color:#eab21f">Зарегистрироваться</a></p>
+              </div>
+            </article>
+             <article class="item">
+              <img src="http://placehold.it/1200x440/999999/cccccc">
+              <div class="carousel-caption">
+                <p>Введи промокод <code>LOLBETS50</code>, получи 50 рублей на лицевой счет.</p>
+                <p><a class="btn btn-success btn-sm btn-square" style="background:#eab21f; border-color:#eab21f">Зарегистрироватся</a></p>
+              </div>
+            </article>
+          </div>
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel" data-slide-to="1"></li>
+          </ol>
+          <!-- Controls -->
+          <div class="carousel-controls">
+              <a class="carousel-control left" href="#Carousel" data-slide="prev">
+                <span class="icon icon-arrow-left"></span>
+              </a>
+              <a class="carousel-control right" href="#Carousel" data-slide="next">
+                <span class="icon icon-arrow-right"></span>
+              </a>
+          </div>
+        </div>
+    </div><!-- /.carousel -->
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="img-circle" src="{{ url_for('static', filename='card.jpg') }}" alt="Generic placeholder image">
+
+            <h2>Удобно пополнять</h2>
+
+            <p>На нашем сайте доступно множество методов пополнения счета</p>
+
+            <p><a class="btn btn-default" href="/balance" role="button">Пополнить счет &raquo;</a></p>
+        </div>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-circle" src="{{ url_for('static', filename='money2.jpg') }}" alt="Generic placeholder image">
+
+            <h2>Удобно выводить</h2>
+
+            <p> Быстрый вывод средств, всего несколько часов от отправки заявки до получения средств</p>
+
+            <p><a class="btn btn-default" href="/balance" role="button">Вывести средства &raquo;</a></p>
+        </div>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-circle" src="{{ url_for('static', filename='guard.jpg') }}" alt="Generic placeholder image">
+
+            <h2>Надежная защита от специалистов</h2>
+
+            <p>Ваши данные и средства под надежной защитой</p>
+
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Огромный выбор матчей.</h2>
+
+            <p class="lead"><span class="text-muted">Мы стараемся захватить все матчи сплитов и турниров разных регионов, от LCK и LPL до СНГ сцены </span>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto"
+                 alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto"
+                 alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Будь в курсе всех новостей и событий</h2>
+
+            <p class="lead">Установи наше расширение для Google Chrome, Opera, FireFox, и получай оповещения о выйгрышных ставках и грядущих матчах </p>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Статистика.</span></h2>
+
+            <p class="lead"><span class="text-muted"> Отличительной чертой нашего сервиса является наличие статистики по матчам, которая поможет вам принять решение </span>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto"
+                 alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+    <script src="{{ url_for('static', filename='docs.min.js') }}"></script>
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='carousel.css') }}"/>
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+</div>
+{% endblock %}

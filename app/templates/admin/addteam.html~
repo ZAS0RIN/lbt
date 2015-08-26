@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}LolBets - admin{% endblock %}
+{% block page_content %}
+<div class="page-header">
+<h1>Add(edit) team</h1>
+</div>
+<div class="container">
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+    {% if team %}
+    <div class="col-md-4">
+        <h4> Текущие данные:</h4>
+        {{team.id}}
+        <br>{{team.name}}
+        <br>{{team.long_name}}
+    </div>
+    {% endif %}
+    {%if event%}
+    <div class="col-md-4">
+        <h4> Текущие данные:</h4>
+        {{event.id}}
+        <br>{{event.get_data()[0]}}
+        <br>{{event.team1_k}}
+        <br>{{event.team12_k}}
+        <br>{{event.team2_k}}
+        <br>{{event.get_data()[1]}}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}LOLBets.ru - Confirm your accont{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        Здраствуйте, {{ current_user.username }}!
+    </h1>
+    <h3>Подтвердите пожалуйста почту.</h3>
+    <p>
+        Письмо с подтверждением высланно на почту {{ current_user.email }} <br>
+        Если письма нет проверьте в спаме
+    </p>
+    <p>
+        <a href="{{ url_for('auth.resend_confirmation') }}">Выслать снова</a>
+    </p>
+</div>
+{% endblock %}

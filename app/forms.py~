@@ -1,0 +1,12 @@
+from flask_wtf import Form
+from wtforms import SubmitField, IntegerField
+
+
+class SetBetForm(Form):
+    value1 = IntegerField('')
+    submit = SubmitField('Ok')
+
+
+class SetBetForm2(Form):
+    value2 = IntegerField('')
+    submit2 = SubmitField('Ok')

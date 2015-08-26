@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="container">
+    <div class="page-header">
+        {% if title_name %}
+        <h1> {{title_name.decode('utf-8')}}</h1>
+        {% else %}
+        <h1> События </h1>
+        {% endif %}
+    </div>
+</div>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <td>Дата</td>
+        <td>Команда 1</td>
+        <td>Коэф</td>
+        <td> X</td>
+        <td>Коэф</td>
+        <td>Команда 2</td>
+    </tr>
+    {%for e in events%}
+    <tr onclick="window.location.href='/event/{{e.id}}/'; return false" style="cursor: pointer;">
+        <td data-toggle="tooltip" data-placement="top" title="{{ e.date.time() }} {{ e.date.date()}}">
+            {{momentjs(e.date).fromNow()}}
+        </td>
+        <td>{{e.get_data()[0]}}</td>
+        <td>{{e.team1_k}}</td>
+        {%if not e.team12_k%}
+        <td>X</td>
+        {%else%}
+        <td>{{e.team12_k}}</td>
+        {%endif%}
+        <td>{{e.team2_k}}</td>
+        <td>{{e.get_data()[1]}}</td>
+    </tr>
+    {%endfor%}
+</table>
+{% block set_bet %} {% endblock%}
+{% endblock %}

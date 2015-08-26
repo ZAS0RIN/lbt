@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="container">
+    <div class="page-header">
+        <h1>SET WIN TEAM</h1>
+    </div>
+</div>
+
+    <table class="table table-striped table-hover">
+            <tr>
+                <td>Дата</td>
+                <td>Команда 1</td>
+                <td>Коэф </td>
+                <td>   X   </td>
+                <td>Коэф </td>
+                <td>Команда 2</td>
+             </tr>
+        {%for e in events%}
+                <tr>
+                    <td>{{e.date}}</td>
+                    <td onclick="window.location.href='/admin/set_win/{{e.id}}/{{e.team1_id}}'; return false" style="cursor: pointer;">{{e.get_data()[0]}}</td>
+                    <td onclick="window.location.href='/admin/set_win/{{e.id}}/{{e.team1_id}}'; return false" style="cursor: pointer;">{{e.team1_k}}</td>
+                    {%if not e.team12_k%}
+                    <td>X</td>
+                    {%else%}
+                    <td>{{e.team12_k}}</td>
+                    {%endif%}
+                    <td onclick="window.location.href='/admin/set_win/{{e.id}}/{{e.team2_id}}'; return false" style="cursor: pointer;">{{e.team2_k}}</td>
+                    <td onclick="window.location.href='/admin/set_win/{{e.id}}/{{e.team2_id}}'; return false" style="cursor: pointer;">{{e.get_data()[1]}}</td>
+                </tr>
+        {%endfor%}
+    </table>
+    {% block set_bet %} {% endblock%}
+{% endblock %}

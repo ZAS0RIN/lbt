@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Hello Admin!</h1>
+        <a href="/admin/add_team">add team </a>
+        <a href="/admin/all_team">all team </a>
+        <a href="/admin/add_event">add Event </a>
+        <a href="/admin/events">all Events </a>
+        <a href="/admin/all_users">all use r</a>
+        <a href="/admin/set_win">set win </a>
+    </div>
+    {% if alert_event %}
+        {% for i in alert_event %}
+            <p>{{i.id}} {{i.get_data()[0]}} VS {{i.get_data()[1]}}</p>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

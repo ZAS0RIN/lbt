@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}LolBets - admin{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>Add event</h1>
+</div>
+<h2>Current time: {{time}}</h2>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+
+<div class="col-md-4">
+    {%for i in teams%}
+    <p>ID {{ i.id }}  {{ i.name }} - {{ i.long_name }}</p>
+    {%endfor%}
+</div>
+<div class="col-md-4">
+    {%for i in events%}
+    <p>ID {{ i.id }}  {{ i.team1_id }} - {{ i.team2_id }} - {{ i.date }}</p>
+    {%endfor%}
+</div>
+{% endblock %}

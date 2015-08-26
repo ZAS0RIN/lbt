@@ -1,0 +1,17 @@
+from app import db, models
+from datetime import datetime
+u = models.User(email='admin@gmail.com', username='admin', password='admin', role=models.ROLE_ADMIN, balance = 1000, confirmed=True)
+u1 = models.User(email='moder@gmail.com', username='moder', password='moder', role=models.ROLE_MODERATOR, confirmed=True)
+u2 = models.User(email='user@gmail.com', username='user', password='user', role=models.ROLE_USER, confirmed=True)
+t1 = models.Team(name='DWS', long_name='Dolphins')
+t2 = models.Team(name='HR', long_name='Hard Random')
+e = models.Event(team1_id=1, team2_id=2, team1_k=1.5, team2_k=1.5, date=datetime(2015,8,12,20,00))
+db.session.add(u)
+db.session.add(u1)
+db.session.add(u2)
+db.session.add(t1)
+db.session.add(t2)
+db.session.add(e)
+b = models.Bet(team_id = 1, k = 1.5, author_id = 1, event_id=1,cash = 100)
+db.session.add(b)
+db.session.commit()

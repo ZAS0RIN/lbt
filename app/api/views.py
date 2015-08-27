@@ -12,45 +12,14 @@ from datetime import datetime, timedelta
 @api.route('/get_news')
 def get_news():
     for i in Event.query.filter_by(is_archive=False).order_by(Event.date.desc()).all():
-        print datetime.utcnow().isoformat() > i.date.isoformat()
-        print (datetime.utcnow() + timedelta(minutes=10)).isoformat() < i.date.isoformat()
         if not datetime.utcnow().isoformat() > i.date.isoformat() and not (
                     datetime.utcnow() + timedelta(minutes=10)).isoformat() < i.date.isoformat():
-            return jsonify({
-                #'time': i.date.strftime("%Y-%m-%d %H:%M:%S"),
+            print(i.id)
+            return jsonify({\
                 'quoteAuthor': 'Скоро начнется матч',
-                'quoteText': 'Играют ' + i.get_name_event() + ', успевайте сделать ставки!',
+                'quoteText': 'Играют ' + i.get_name_event() + ', <a href="95.213.194.178/events/' + str(i.id) + '">успевайте сделать ставки!</a>', 
             })
     return jsonify({
         'data': False
     })
 
-@api.route('/get_new')
-def get_new():
-    for i in Event.query.filter_by(is_archive=False).order_by(Event.date.desc()).all():
-        print datetime.utcnow().isoformat() > i.date.isoformat()
-        print (datetime.utcnow() + timedelta(minutes=10)).isoformat() < i.date.isoformat()
-        if not datetime.utcnow().isoformat() > i.date.isoformat() and not (
-                    datetime.utcnow() + timedelta(minutes=10)).isoformat() < i.date.isoformat():
-            return jsonify({
-                'time': i.date.strftime("%Y-%m-%d %H:%M:%S"),
-                'title': 'Скоро начнется матч',
-                'desc': 'Играют' + i.get_name_event() + ', успевайте сделать ставки!',
-                'data': True
-            })
-    return jsonify({
-                'quoteLink': Event.query.all()[0].date.strftime("%Y-%m-%d %H:%M:%S"),
-                'quoteAuthor': 'Скоро начнется матч',
-                'quoteText': 'Играют' + i.get_name_event() + ', успевайте сделать ставки!',
-                'data': True
-            })
-    return jsonify({
-        'data': False
-    })
-
-
-@api.route('/get_ne')
-def get_ne():
-    return jsonify({
-        'data': False
-    })

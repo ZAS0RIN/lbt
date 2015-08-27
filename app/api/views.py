@@ -23,5 +23,10 @@ def get_news():
                 'data': True
             })
     return jsonify({
+                'quoteLink': 'http://forismatic.com/en/ef1bfe522b/',
+                'quoteAuthor': 'title',
+                'quoteText': 'text'
+            })
+    return jsonify({
         'data': False
     })

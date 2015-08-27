@@ -20,6 +20,8 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 app.secret_key = 'mom, generate plz this key'
 
+NEWS_API = []
+
 db = SQLAlchemy(app)
 
 

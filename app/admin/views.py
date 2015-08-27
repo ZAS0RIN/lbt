@@ -236,7 +236,7 @@ def parse_async_event():
                 addteam_data(e.team2[i])
             ev = Event(team1_id=Team.query.filter_by(name=e.team1[i]).first().id,
                        team2_id=Team.query.filter_by(name=e.team2[i]).first().id,
-                       date=datetime.fromtimestamp(e.time[i]).replace(hour=datetime.fromtimestamp((e.time[i])).hour-5),
+                       date=datetime.fromtimestamp(e.time[i]).replace(hour=datetime.fromtimestamp((e.time[i])).hour-3),
                        team1_k=e.k1[i], team2_k=e.k2[i])
             db.session.add(ev)
             db.session.commit()

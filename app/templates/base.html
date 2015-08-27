@@ -21,6 +21,10 @@
                 {% if current_user.role == 1 %}
                 <li><a href="/admin">Moderator</a></li>
                 {% endif %}
+
+                {% if not current_user.role == 0 %}
+                <li><a href="/about">Контакты</a></li>
+                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated() %}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import Form
-from wtforms import SubmitField, IntegerField, StringField
+from wtforms import StringField, SubmitField, IntegerField, TextField
+from wtforms.validators import Required, Length, Email
 
 
 class SetBetForm(Form):
@@ -16,3 +17,10 @@ class SetBetForm2(Form):
 class EnterPromoForm(Form):
     text = StringField('Введите промокод')
     submit = SubmitField('Ок')
+
+
+class QuestionsForm(Form):
+    email = StringField('Email', validators=[Required(), Length(1, 64),
+                                             Email()])
+    text = TextField('Cообщение', validators=[Required()])
+    submit1 = SubmitField('Отправить')

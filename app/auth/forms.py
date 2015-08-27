@@ -4,6 +4,8 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import Required, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 from ..models import User
+from jinja2 import Markup
+
 
 
 class LoginForm(Form):
@@ -24,6 +26,7 @@ class RegistrationForm(Form):
     Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,'Имя пользователя должно начинатся с буквы, и должно содержать буквы, цифры, точку или нижнее подчеркивание')])
     password = PasswordField('Пароль', validators=[Required(), EqualTo('password2', message='Пароли должны совпадать')])
     password2 = PasswordField('Повторите пароль', validators=[Required()])
+    accept = BooleanField(Markup(u"<a href='/rules'> C правилами ознакомлен</a>"), [Required()])
     submit = SubmitField('Зарегистрироваться')
 
     def validate_email(self, field):

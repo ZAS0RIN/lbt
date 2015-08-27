@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from app import app, db
 from flask import Flask, render_template, flash, redirect, url_for, request, g
+
 from models import Event, Bet, Team, User, History, TYPE_BET
-from forms import SetBetForm, SetBetForm2, EnterPromoForm
+from forms import SetBetForm, SetBetForm2, EnterPromoForm, QuestionsForm
 from auth.forms import ChangePasswordForm
 from decorators import check_confirmed
 from datetime import datetime
@@ -61,7 +62,7 @@ def mybets():
     active.reverse()
     passive = current_user.bets.filter_by(is_archive=True).all()
     passive.reverse()
-    return render_template('mybets.html', active=active,passive=passive)
+    return render_template('mybets.html', active=active, passive=passive)
 
 
 @app.route('/event/all/')
@@ -139,6 +140,20 @@ def event_id(id):
     return render_template('event.html', events=[e], title_name=e.get_data()[0] + ' - ' + e.get_data()[1],
                            t1h=team1_history, t2h=team2_history, t1name=e.get_data()[0], t2name=e.get_data()[1],
                            form1=form1, form2=form2)
+
+
+@app.route('/rules')
+def rules():
+    return render_template('rules.html')
+
+
+@app.route('/about', methods=['POST','GET'])
+def about():
+    form = QuestionsForm()
+    if form.validate_on_submit():
+        flash('Сообщение отправленно')
+        return redirect('/events')
+    return render_template('about.html', form=form)
 
 
 @app.errorhandler(404)

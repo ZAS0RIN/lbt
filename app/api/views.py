@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 def get_news():
     for i in Event.query.filter_by(is_archive=False).order_by(Event.date.desc()).all():
         if not datetime.utcnow().isoformat() > i.date.isoformat() and not (
-                    datetime.utcnow() + timedelta(minutes=30)).isoformat() < i.date.isoformat():
+                    datetime.utcnow() + timedelta(minutes=10)).isoformat() < i.date.isoformat():
             print(i.id)
             return jsonify({\
                 'quoteAuthor': 'Скоро начнется матч',

@@ -154,11 +154,15 @@ def edit_event(id):
         form.team1_k.data = e.team1_k
     if not form.team2_k.data:
         form.team2_k.data = e.team2_k
+    if not form.date.data:
+        form.date.data = e.date
     if form.validate_on_submit():
         if form.team1_k.data:
             e.team1_k = form.team1_k.data
         if form.team2_k.data:
             e.team2_k = form.team2_k.data
+        if form.date.data:
+            e.date = form.date.data
         db.session.commit()
         flash('Change - OK')
         return redirect(url_for('admin.index'))
@@ -173,7 +177,7 @@ def del_event(id):
         return render_template('404.html'), 404
     e.del_event()
     flash('del - OK')
-    return redirect(url_for('admin.index'))
+    return redirect(url_for('admin.event_all'))
 
 
 # @admin.route('/user/<int:id>', methods=['GET', 'POST'])
@@ -192,7 +196,6 @@ def del_event(id):
 #        flash('Change - OK')
 #       return redirect(url_for('admin.index'))
 #    return render_template('admin/addteam.html', form=form, user=u)
-
 
 
 
@@ -236,7 +239,8 @@ def parse_async_event():
                 addteam_data(e.team2[i])
             ev = Event(team1_id=Team.query.filter_by(name=e.team1[i]).first().id,
                        team2_id=Team.query.filter_by(name=e.team2[i]).first().id,
-                       date=datetime.fromtimestamp(e.time[i]).replace(hour=datetime.fromtimestamp((e.time[i])).hour-3),
+                       date=datetime.fromtimestamp(e.time[i]).replace(
+                           hour=datetime.fromtimestamp((e.time[i])).hour - 3),
                        team1_k=e.k1[i], team2_k=e.k2[i])
             db.session.add(ev)
             db.session.commit()

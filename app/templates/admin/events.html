@@ -17,8 +17,8 @@
                 <td>Команда 2</td>
              </tr>
         {%for e in events%}
-                <tr onclick="window.location.href='/admin/event/{{e.id}}'; return false" style="cursor: pointer;">
-                    <td>{{e.date}}</td>
+                <tr>
+                    <td  onclick="window.location.href='/admin/event/{{e.id}}'; return false" style="cursor: pointer;">{{e.date}}</td>
                     <td >{{e.get_data()[0]}}</td>
                     <td>{{e.team1_k}}</td>
                     {%if not e.team12_k%}

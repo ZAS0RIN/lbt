@@ -27,5 +27,5 @@ class ResultForm(Form):
 class EditEventForm(Form):
     team1_k = FloatField('Team 1 K')
     team2_k = FloatField('Team 2 K')
-
+    date = DateTimeField('Date Actions')
     submit = SubmitField('Push')

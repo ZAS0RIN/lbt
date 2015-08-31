@@ -156,6 +156,11 @@ def about():
     return render_template('about.html', form=form)
 
 
+
+@app.route('/3058fc2ea731.html', methods=['POST','GET'])
+def yandex():
+    return render_template('3058fc2ea731.html')
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

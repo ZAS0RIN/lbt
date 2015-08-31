@@ -41,18 +41,7 @@
     </div>
 
     <div class="col-md-3">
-        <!--<h3>Пополнить счет</h3>-->
-        <!--<form class="form-inline" role="form" method="post" action="https://wl.walletone.com/checkout/checkout/Index">-->
-            <!--<input name="WMI_MERCHANT_ID" value="152495843288" type="hidden"/>-->
-            <!--<div class="input-group">-->
-                <!--<input name="WMI_PAYMENT_AMOUNT" value="100.00" type="text" class="form-control">-->
-            <!--</div>-->
-            <!--<input name="WMI_CURRENCY_ID" value="643" type="hidden"/>-->
-            <!--<input name="WMI_DESCRIPTION" value="Пополнение счета" type="hidden"/>-->
-            <!--<input name="WMI_SUCCESS_URL" value="https://myshop.ru/w1/paid.php" type="hidden"/>-->
-            <!--<input name="WMI_FAIL_URL" value="https://myshop.ru/w1/fail.php" type="hidden"/>-->
-            <!--<input type="submit" class="btn btn-default"/>-->
-        <!--</form>-->
+        <!--<iframe src="http://www.free-kassa.ru/merchant/forms.php?gen_form=1&writer=seller&targets=Пополнение счета LOLBets.ru&default-sum=100&button-text=Оплатить&hint= &encoding=UTF8&type=big&cur=RUR&m=14987&form_id=&id=16214"  width="650" height="620" frameBorder="0" ></iframe>-->
     </div>
 
     <div class="col-xs-2">
@@ -62,8 +51,9 @@
             {{ wtf.form_errors(form, hiddens="only") }}
             {{ wtf.form_field(form.text) }}
             {{ wtf.form_field(form.submit) }}
+
         </form>
     </div>
 </div>
-
+<a href="//www.free-kassa.ru/"><img src="//free-kassa.ru/img/fk_btn/23.png"></a>
 {% endblock %}

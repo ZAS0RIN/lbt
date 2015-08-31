@@ -156,6 +156,12 @@ def about():
     return render_template('about.html', form=form)
 
 
+@app.route('/result_cash/<data>', methods=['POST', 'GET'])
+def parse_result(data):
+    request.url
+    return render_template('404.html')
+
+
 
 @app.route('/3058fc2ea731.html', methods=['POST','GET'])
 def yandex():

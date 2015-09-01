@@ -165,6 +165,8 @@ def parse_result(data):
 @app.route('/notification/<data>', methods=['GET'])
 def notification(data):
     flash('noti' + request.url)
+    current_user.balance += 100
+    db.session.commit()
     return render_template('404.html', data=request.url)
 
 

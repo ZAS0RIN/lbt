@@ -147,7 +147,7 @@ def rules():
     return render_template('rules.html')
 
 
-@app.route('/about', methods=['POST','GET'])
+@app.route('/about', methods=['POST', 'GET'])
 def about():
     form = QuestionsForm()
     if form.validate_on_submit():
@@ -156,10 +156,11 @@ def about():
     return render_template('about.html', form=form)
 
 
-@app.route('/result_cash/<data>', methods=[ 'GET'])
+@app.route('/result_cash/<data>', methods=['GET'])
 def parse_result(data):
     flash('parse_res' + request.url)
     return render_template('404.html', data=request.url)
+
 
 @app.route('/notification/<data>', methods=['GET'])
 def notification(data):
@@ -167,9 +168,10 @@ def notification(data):
     return render_template('404.html', data=request.url)
 
 
-@app.route('/3058fc2ea731.html', methods=['POST','GET'])
+@app.route('/3058fc2ea731.html', methods=['POST', 'GET'])
 def yandex():
     return render_template('3058fc2ea731.html')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
